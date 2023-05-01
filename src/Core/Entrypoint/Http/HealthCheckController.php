@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Entrypoint\Http;
+namespace YourCompany\Core\Entrypoint\Http;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

@@ -42,16 +42,12 @@ sh: ## Run a shell in the php container
 		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh
 
 unit: ## Run the unit tests
-		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "phpunit --order=random --testsuite=Unit"
+		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "phpunit --order=random --testsuite=Unit --coverage-text"
 
 integration: ## Run the integration tests
-		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "phpunit --order=random --testsuite=Integration"
+		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "phpunit --order=random --testsuite=Integration --coverage-text"
 
 acceptance: ## Run the acceptance tests
-ifndef TEST
-		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "./vendor/bin/behat --stop-on-failure --no-interaction --strict"
-else
-		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "./vendor/bin/behat --stop-on-failure --no-interaction --strict $(TEST)"
-endif
+		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "phpunit --order=random --testsuite=Acceptance --coverage-text"
 
 tests: unit integration acceptance ## Run all the tests
