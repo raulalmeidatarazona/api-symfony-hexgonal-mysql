@@ -32,7 +32,11 @@ erase: ## Erase all the containers
 install: ## Install the project dependencies
 		mkdir -p ~/.composer && chown ${UID}:${GID} ~/.composer
 		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} composer install
-		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} bin/console doctrine:database:create --if-not-exists
+
+db: ## Create the database
+		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "./bin/console d:d:d --force --if-exists"
+		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "./bin/console d:d:c"
+		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "./bin/console d:m:m --no-interaction"
 
 clean: ## Clean the project
 		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} composer dump-autoload

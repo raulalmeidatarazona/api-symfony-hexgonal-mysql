@@ -1,9 +1,8 @@
-api_controllers:
-    resource: ../src/*/Entrypoint/Http/*/*Controller.php
-    type: annotation
-    prefix: /core/v1
-
 status_controllers:
-    resource: ../src/*/Entrypoint/Http/*Controller.php
-    type: annotation
-    prefix:
+  path: /health-check
+  controller: YourCompany\Core\Entrypoint\Http\HealthCheckController
+  methods: [ GET ]
+
+api_core_routes:
+  resource: routes/core/entrypoint/routes.yaml
+  prefix: /core
