@@ -1,0 +1,9 @@
+api_controllers:
+    resource: ../src/*/Entrypoint/Http/*/*Controller.php
+    type: annotation
+    prefix: /core
+
+status_controllers:
+    resource: ../src/*/Entrypoint/Http/*Controller.php
+    type: annotation
+    prefix:

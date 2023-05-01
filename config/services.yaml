@@ -1,0 +1,13 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    App\:
+        resource: '../src/'
+
+    App\Core\Entrypoint\Http\:
+        resource: '../src/Core/Entrypoint/Http/*/*Controller.php'
+        tags: [ 'controller.service_arguments' ]

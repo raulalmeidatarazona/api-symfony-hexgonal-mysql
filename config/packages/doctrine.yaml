@@ -1,0 +1,8 @@
+doctrine:
+    dbal:
+        default_connection: primary
+        connections:
+            primary:
+                driver: pdo_mysql
+                charset: utf8
+                url: '%env(resolve:DATABASE_URL)%'
