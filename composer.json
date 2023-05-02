@@ -1,6 +1,6 @@
 {
-    "name": "raulalmeidatarazona/api-symfony-platform-hexgonal-mysql",
-    "description": "Symfony 6.2 application skeleton api platform",
+    "name": "raulalmeidatarazona/api-symfony-hexgonal-mysql",
+    "description": "Symfony 6.2 application skeleton api hexagonal with mysql",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
