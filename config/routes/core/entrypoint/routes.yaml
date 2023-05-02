@@ -1,0 +1,4 @@
+register_user:
+  path: /v1/users/register
+  controller: YourCompany\Core\Entrypoint\Http\User\RegisterUserController::register
+  methods: [ POST ]

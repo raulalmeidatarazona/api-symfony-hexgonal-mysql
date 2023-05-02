@@ -32,7 +32,11 @@ erase: ## Erase all the containers
 install: ## Install the project dependencies
 		mkdir -p ~/.composer && chown ${UID}:${GID} ~/.composer
 		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} composer install
-		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} bin/console doctrine:database:create --if-not-exists
+
+db: ## Create the database
+		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "./bin/console d:d:d --force --if-exists"
+		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "./bin/console d:d:c"
+		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "./bin/console d:m:m --no-interaction"
 
 clean: ## Clean the project
 		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} composer dump-autoload
@@ -42,16 +46,12 @@ sh: ## Run a shell in the php container
 		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh
 
 unit: ## Run the unit tests
-		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "phpunit --order=random --testsuite=Unit"
+		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "phpunit --order=random --testsuite=Unit --coverage-text"
 
 integration: ## Run the integration tests
-		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "phpunit --order=random --testsuite=Integration"
+		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "phpunit --order=random --testsuite=Integration --coverage-text"
 
 acceptance: ## Run the acceptance tests
-ifndef TEST
-		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "./vendor/bin/behat --stop-on-failure --no-interaction --strict"
-else
-		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "./vendor/bin/behat --stop-on-failure --no-interaction --strict $(TEST)"
-endif
+		docker-compose run --rm -u ${UID}:${GID} ${DOCKER_PHP_SERVICE} sh -c "phpunit --order=random --testsuite=Acceptance --coverage-text"
 
 tests: unit integration acceptance ## Run all the tests

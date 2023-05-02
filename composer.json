@@ -1,6 +1,6 @@
 {
-    "name": "raulalmeidatarazona/api-symfony-platform-hexgonal-mysql",
-    "description": "Symfony 6.2 application skeleton api platform",
+    "name": "raulalmeidatarazona/api-symfony-hexgonal-mysql",
+    "description": "Symfony 6.2 application skeleton api hexagonal with mysql",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
@@ -9,28 +9,16 @@
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "api-platform/core": "^3.1",
-        "doctrine/annotations": "^2.0",
         "doctrine/doctrine-bundle": "^2.9",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.14",
-        "nelmio/cors-bundle": "^2.3",
-        "phpdocumentor/reflection-docblock": "^5.3",
-        "phpstan/phpdoc-parser": "^1.20",
-        "symfony/asset": "6.2.*",
         "symfony/console": "6.2.*",
         "symfony/dotenv": "6.2.*",
-        "symfony/expression-language": "6.2.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.2.*",
-        "symfony/property-access": "6.2.*",
-        "symfony/property-info": "6.2.*",
         "symfony/runtime": "6.2.*",
         "symfony/security-bundle": "6.2.*",
-        "symfony/serializer": "6.2.*",
-        "symfony/twig-bundle": "6.2.*",
         "symfony/uid": "6.2.*",
-        "symfony/validator": "6.2.*",
         "symfony/yaml": "6.2.*"
     },
     "config": {
@@ -43,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "YourCompany\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "YourCompany\\Tests\\": "tests/"
         }
     },
     "replace": {
@@ -85,7 +73,6 @@
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "6.2.*",
         "symfony/css-selector": "6.2.*",
-        "symfony/maker-bundle": "^1.48",
         "symfony/phpunit-bridge": "^6.2"
     }
 }

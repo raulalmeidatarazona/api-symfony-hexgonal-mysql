@@ -1,5 +1,8 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+status_controllers:
+  path: /health-check
+  controller: YourCompany\Core\Entrypoint\Http\HealthCheckController
+  methods: [ GET ]
+
+api_core_routes:
+  resource: routes/core/entrypoint/routes.yaml
+  prefix: /core

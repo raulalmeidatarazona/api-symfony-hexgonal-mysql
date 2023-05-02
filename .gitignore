@@ -8,6 +8,10 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
+.idea
+.vscode
+.DS_Store
+
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
 /phpunit.xml
@@ -17,10 +21,3 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
-
-###> Other files and folders ###
-.idea
-.vscode
-docker-compose.override.yml
-.DS_Store
-###< Other files and folders ###
